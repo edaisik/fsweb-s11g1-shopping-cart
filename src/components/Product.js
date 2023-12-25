@@ -1,7 +1,10 @@
 import React from "react";
 import { ScProduct } from "./scParts";
+import { useCart } from "../contexts/CartContext";
 
 const Product = (props) => {
+  const { addItem } = useCart();
+
   return (
     <ScProduct>
       <img src={props.product.image} alt={`${props.product.title} book`} />
@@ -9,9 +12,7 @@ const Product = (props) => {
         <h1 className="title">{props.product.title}</h1>
         <div className="footer">
           <p className="price">${props.product.price}</p>
-          <button onClick={() => props.addItem(props.product)}>
-            Add to cart
-          </button>
+          <button onClick={() => addItem(props.product)}>Add to cart</button>
         </div>
       </div>
     </ScProduct>
